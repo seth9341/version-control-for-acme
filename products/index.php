@@ -8,7 +8,8 @@
     require_once '../model/products-model.php';
     // Get the functions library
     require_once '../library/functions.php';
-    $navList = buildNav();
+    buildNav();
+    // $navList = buildNav();
     $categories = getCategories();
     $catList = buildCategoryList();
     $action = filter_input(INPUT_POST, 'action');
