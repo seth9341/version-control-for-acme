@@ -8,7 +8,7 @@
     require_once '../model/acme-model.php';
     // Get the accounts model
     require_once '../model/accounts-model.php';
-    // Get the functions library
+    //get the common functions
     require_once '../library/functions.php';
     $categories = getCategories();
     $navList = buildNav();
@@ -43,7 +43,7 @@
             $hashedPassword = password_hash($clientPassword, PASSWORD_DEFAULT);
             $regOutcome = regClient($clientFirstname, $clientLastname, $clientEmail, $hashedPassword);
             if($regOutcome ===1) {
-                $message = "<p>Thank you, $clientFirstname! You have successfully registered. Please log in.</p>";                
+                $message = "<p>Congratulations, $clientFirstname! You have successfully registered! Please log in now.</p>";                
                 include '../view/login.php';
                 exit;
             } else {

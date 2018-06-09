@@ -6,7 +6,7 @@
     require_once '../library/connections.php';
     // Get the acme model for use as needed
     require_once '../model/products-model.php';
-    // Get the functions library
+    //get the common functions
     require_once '../library/functions.php';
     buildNav();
     // $navList = buildNav();
