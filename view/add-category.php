@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php $ptitle= 'Add a category'; include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/header.php'; ?>
 		<nav>
-				<?php echo $navList; ?>
+            <?php echo buildNav() ?>
 		</nav>
     <body>
         <main>

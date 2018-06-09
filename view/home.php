@@ -1,6 +1,6 @@
 <?php $ptitle= 'ACME: Buy Here. Eat Roadrunner. '; include  $_SERVER['DOCUMENT_ROOT'] . '/acme/common/header.php'; ?>
 		<nav >
-					<?php echo $navList; ?>
+            <?php echo buildNav() ?>
 		</nav>
 
 			<div class="divtree">

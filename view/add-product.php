@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php $ptitle= 'Add a product'; include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/header.php'; ?>
 		<nav>
-				<?php echo $navList; ?>
+            <?php echo buildNav() ?>
 		</nav>
 <html lang="en">
     <body>
