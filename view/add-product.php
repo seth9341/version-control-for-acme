@@ -17,64 +17,66 @@
                     <!--end php-->
                 </div>
                 <h1>Add a New Product</h1>
-                <div class="field">
+                <div class="form">
                     <label for="invName">
-                        Product Name:<br>
+                        Product's Name:<br>
                         <input type="text" id="invName" name="invName">
                         <br>
                     </label>
                     <label for="invDescription">
-                        Product Description:<br>
-                        <input type="text" id="invDescription" name="invDescription">
+                        Product's Description:<br>
+                        <textarea id="invDescription" name="invDescription">Product's description</textarea>
+                        <!-- <input type="text" id="invDescription" name="invDescription"> -->
                         <br>
                     </label>
+                    
                     <label for="invImage">
-                        Product Image:<br>
-                        <input type="text" id="invImage" name="invImage" value="/acme/images/site/no-image.png">
+                        Product's Image (path to image):<br>
+                        <input type="text" id="invImage" name="invImage" value="example:/acme/images/site/no-image.png">
                         <br>
                     </label>
                     <label for="invThumbnail">
-                        Product Thumbnail:<br>
-                        <input type="text" id="invThumbnail" name="invThumbnail"  value="/acme/images/site/no-image.png">
+                        Product's Thumbnail (path to thumbnail):<br>
+                        <input type="text" id="invThumbnail" name="invThumbnail"  value="example: /acme/images/site/no-image.png">
                         <br>
                     </label>
                     <label for="invPrice">
-                        Product Price:<br>
+                        Product's Price:<br>
                         <input type="text" id="invPrice" name="invPrice">
                         <br>
                     </label>
                     <label for="invStock">
-                        Product Stock??:<br>
+                        Amount of product in stock:<br>
                         <input type="text" id="invStock" name="invStock">
                         <br>
                     </label>
                     <label for="invSize">
-                        Product Size:<br>
+                        Product's Size:<br>
                         <input type="text" id="invSize" name="invSize">
                         <br>
                     </label>
                     <label for="invWeight">
-                        Product Weight:<br>
+                        Product's Weight:<br>
                         <input type="text" id="invWeight" name="invWeight">
                         <br>
                     </label>
                     <label for="invLocation">
-                        Product Location:<br>
+                        Product's Location:<br>
                         <input type="text" id="invLocation" name="invLocation">
                         <br>
                     </label>
                     <label for="categoryId">
-                        Product Category:
+                        Product's Category:
                         <?php echo $catList; ?>
                         <br>
                     </label>
                     <label for="invVendor">
-                        Product Vendor:<br>
+                        Product's Vendor:<br>
                         <input type="text" id="invVendor" name="invVendor">
                         <br>
                     </label>
                     <label for="invStyle">
-                        Product Style:<br>
+                        Product's Style:<br>
                         <input type="text" id="invStyle" name="invStyle">
                         <br>
                     </label>
