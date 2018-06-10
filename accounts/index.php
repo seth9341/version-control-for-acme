@@ -51,7 +51,7 @@
                 include '../view/registration.php';
                 exit;
             }
-        case 'login':
+        case 'Login':
             include '../view/login.php';
                 $clientFirstname = filter_input(INPUT_POST, 'clientFirstname', FILTER_SANITIZE_STRING);
                 $clientLastname = filter_input(INPUT_POST, 'clientLastname', FILTER_SANITIZE_STRING);

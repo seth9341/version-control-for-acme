@@ -20,7 +20,7 @@
                         <label for="clientPassword">Password</label>
                         <input type="password" required placeholder="Type Your Password" name="clientPassword"  id="clientPassword" size="30" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"><br>
                     </fieldset>
-                    <input type="submit" value="log in" onclick="window.location.href='/acme/accounts?action=login'" /><br>
+                    <input type="submit" value="log in" onclick="window.location.href='/acme/accounts?action=Login'" /><br>
                     <span>forgot password? <a href="/#" "email me">send reset email</a></span><br>
                     <input type="submit" value="Register" onclick="window.location.href='/acme/accounts?action=Registration'" />
                 
