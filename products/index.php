@@ -38,7 +38,7 @@
         case 'product-management':
             include '../view/product-management.php';
             break;
-        case 'add-cat':
+        case 'add-category':
             $categoryName = filter_input(INPUT_POST, 'categoryName', FILTER_SANITIZE_STRING);
             if (empty($categoryName)) {
                 $message = '<p>Please enter a category name.</p>';
@@ -55,7 +55,7 @@
                 include '../view/add-category.php';
                 exit;
             }            
-        case 'add-prod':
+        case 'add-product':
             $invName = filter_input(INPUT_POST, 'invName', FILTER_SANITIZE_STRING);
             $invDescription = filter_input(INPUT_POST, 'invDescription', FILTER_SANITIZE_STRING);
             $invImage = filter_input(INPUT_POST, 'invImage', FILTER_SANITIZE_STRING);
@@ -70,9 +70,9 @@
             $invStyle = filter_input(INPUT_POST, 'invStyle', FILTER_SANITIZE_STRING);
             if (empty($invName) || empty($invDescription) || empty($invImage) || empty($invThumbnail) || empty($invPrice) || empty($invStock) || empty($invSize) || empty($invWeight) || empty($invLocation) || empty($categoryId) || empty($invVendor) || empty($invStyle)) {
                 if (empty($categoryId)) {
-                    $message = "<p>Yup - you're not processing the categories right</p>";
+                    $message = "<p>Error processing categories</p>";
                 } else {
-                    $message = '<p>All fields are required. Please fill in any missing fields.</p>';
+                    $message = '<p>All fields are required. Please fill all fields.</p>';
                     include '../view/add-product.php';
                     exit;
                 }
