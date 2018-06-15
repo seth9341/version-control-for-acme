@@ -15,9 +15,9 @@
                 ?>
                 <form action="/acme/accounts/" method="post">
                     <fieldset>
-                        <label for="clientEmail">Email Address</label> 
+                        <label for="clientEmail">Email Address</label><br>
                         <input type="email" required placeholder="Type Your Email" name="clientEmail" id="clientEmail" size="30"><br>
-                        <label for="clientPassword">Password</label>
+                        <label for="clientPassword">Password</label><br>
                         <input type="password" required placeholder="Type Your Password" name="clientPassword"  id="clientPassword" size="30" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"><br>
                     </fieldset>
                     <input type="submit" value="log in" onclick="window.location.href='/acme/accounts?action=Login'" /><br>

@@ -228,6 +228,9 @@ input [type="button"], [type="reset"], [type="submit"] {
     font-family: 'Bangers', cursive;
     font-size: 1.3em;
 }
+.regbtn{
+    
+}
 
 .navbar{
 		display:flex;
