@@ -34,6 +34,9 @@
 		<header id="header">
                     <a href="/acme/"><img id="logo" width="200" src="/acme/images/site/logo.gif" alt="ACME - Buy Here. Eat Roadrunner!"></a>
                     <div id="myAccount">
+                      <?php if(isset($cookieFirstname)){
+                       echo "<span>Welcome $cookieFirstname</span>";
+                      } ?>
                        <a href="/acme/accounts?action=login">My Account</a>
                                         <img id="myAccount" width="40" src="/acme/images/site/account.gif" alt="Go To My Account">
                     </div>

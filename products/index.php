@@ -8,6 +8,9 @@
     require_once '../model/products-model.php';
     //get the common functions
     require_once '../library/functions.php';
+// Create or access a Session
+ session_start();
+
     buildNav();
     // $navList = buildNav();
     $categories = getCategories();

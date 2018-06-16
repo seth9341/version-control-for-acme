@@ -9,8 +9,8 @@
                 <h3>(All Fields are required)</h3>
 
                 <?php
-                if (isset($message)) {
-                echo $message;
+                if (isset($_SESSION['message'])) {
+                 echo $_SESSION['message'];
                 }
                 ?>
                 <form action="/acme/accounts/" method="post">
@@ -20,8 +20,11 @@
                         <label for="clientPassword">Password</label><br>
                         <input type="password" required placeholder="Type Your Password" name="clientPassword"  id="clientPassword" size="30" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"><br>
                     </fieldset>
-                    <input type="submit" value="log in" onclick="window.location.href='/acme/accounts?action=Login'" /><br>
-                    <span>forgot password? <a href="/#" "email me">send reset email</a></span><br>
+                    <input type="submit" name="submit" id="regbtn" value="Log In">
+                    <input type="hidden" name="action" value="Login"><br>
+                    <!-- <input type="submit" value="log in" onclick="window.location.href='/acme/accounts?action=login'" /><br> -->
+                    <!-- <span>forgot password? <a href="/#" "email me">send reset email</a></span><br> -->
+                    <span>Don't have an account? Click below to register.</span><br>
                     <input type="submit" value="Register" onclick="window.location.href='/acme/accounts?action=Registration'" />
                 
                 </form>
