@@ -12,24 +12,35 @@ if (isset($message)) {
     echo $message;
   }
   ?>
-<form action="/acme/accounts/index.php" method="post">
-  <fieldset>
-      <label for="clientFirstname">First name</label><br>
-      <input name="clientFirstname" id="clientFirstname"><br>
+    <form method="post" action="/acme/accounts/">
+      <fieldset>
+        <label for="clientFirstname">First name</label><br>
+              <input type="text"  required placeholder="First Name" name="firstname" id="firstname" <?php
+                     if (isset($firstname)) {
+                         echo "value='$firstname'";
+                     }
+                     ?>><br>
       <label for="clientLastname">Last name</label><br>
-      <input name="clientLastname" id="clientLastname"><br>
+              <input type="text"  required placeholder="Last Name" name="lastname" id="lastname" <?php
+                     if (isset($lastname)) {
+                         echo "value='$lastname'";
+                     }
+                     ?>> <br>
       <label for="clientEmail">Email Address</label><br>
-      <input type="email" name="clientEmail" id="clientEmail"><br>
+              <input type="email" required placeholder="Email Address" name="email" 
+                     id="email"  <?php
+                     if (isset($email)) {
+                         echo "value='$email'";
+                     }
+                     ?>><br>
       <label for="clientPassword">Password</label><br>
-      <label>Passwords must be at least 8 characters and contain at least 1 number, 1 capital letter and 1 special character</label><br>
-      <!-- <input type="password" name="clientPassword" id="clientPassword"> -->
-      <input type="password" name="clientPassword" id="clientPassword" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
-      <label>&nbsp;</label><br>
-      <input type="submit" name="submit" class="regbtn" value="Register">
-      <!--add the action key - value pair-->
-      <input type="hidden" name="action" value="register">
-  </fieldset>
-</form>
+              <span>Passwords must be at least 8 characters and contain at least 1 number, 1 capital letter and 1 special character</span> <br>
+              <input type="password" required placeholder="Password" name="password"  id="password" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"><br>
+              <button type="submit">Create Account</button>
+              <!-- Add the action name - value pair -->
+              <input type="hidden" name="action" value="Register">
+        </fieldset>
+      </form>
 
       </div>
 <?php include  $_SERVER['DOCUMENT_ROOT'] . '/acme/common/footer.php'; ?>

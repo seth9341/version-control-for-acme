@@ -5,20 +5,27 @@
                 echo 'User';
             }
 ?>
-
 <?php $ptitle= 'My ACME Account'; include  $_SERVER['DOCUMENT_ROOT'] . '/acme/common/header.php'; ?>
 		<nav>
 			<?php echo buildNav(); ?>
 		</nav>
-		<<main>
-		<h1><?php echo "$clientFirstname $clientLastname";?></h1>
-			<?php if (isset($message)) {echo $message;} ?>
-			<?php if (isset($passwordMessage)) {echo $passwordMessage;} ?>
-			<p>You are logged in! Here are your account details:</p>
-			<ul>
-				<li>First name: <strong><?php echo $clientFirstname; ?></strong></li>
-				<li>Last name: <strong><?php echo $clientLastname; ?></strong></li>
-				<li>Email: <strong><?php echo $clientEmail; ?></strong></li>
-			</ul>
-		</main>
+		<main>
+            <?php
+            if (isset($message)) {
+                echo "<h3>" . $message . "</h3>";
+            } elseif (isset($_SESSION['message'])) {
+                echo "<h3>" . $_SESSION['message'] . "</h3>";
+            }
+            ?>
+            <?php
+            echo 'Welcome ' . $_SESSION['clientData']['clientFirstname'];
+            echo ' ' . $_SESSION['clientData']['clientLastname'];
+            echo '<ul>';
+            foreach ($_SESSION['clientData'] as $name => $item) {
+                if (($name != 'clientPassword') && ($name != 'clientId') && ($name != 'clientLevel')) {
+                    echo '<li>' . $name . ': ' . $item . '</li>';
+                }
+            }
+            echo '</ul>';
+            ?>
 <?php include  $_SERVER['DOCUMENT_ROOT'] . '/acme/common/footer.php'; ?>

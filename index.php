@@ -11,6 +11,9 @@ d8'          `8b `"Y8888Y"'  88     `8'     88 88888888888
 
 <?php
 
+// Create or access a Session
+ session_start();
+
 // Get the database connection file
  require_once 'library/connections.php';
  // Get the acme model for use as needed
@@ -18,8 +21,7 @@ d8'          `8b `"Y8888Y"'  88     `8'     88 88888888888
  //get the common functions
  require_once './library/functions.php';
 
-// Create or access a Session
- session_start();
+
 
 $action = filter_input(INPUT_POST, 'action');
  if ($action == NULL){

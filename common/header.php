@@ -34,11 +34,16 @@
 		<header id="header">
                     <a href="/acme/"><img id="logo" width="200" src="/acme/images/site/logo.gif" alt="ACME - Buy Here. Eat Roadrunner!"></a>
                     <div id="myAccount">
-                      <?php if(isset($cookieFirstname)){
-                       echo "<span>Welcome $cookieFirstname</span>";
-                      } ?>
-                       <a href="/acme/accounts?action=login">My Account</a>
-                                        <img id="myAccount" width="40" src="/acme/images/site/account.gif" alt="Go To My Account">
+        <?php
+        if (isset($_SESSION['loggedin'])) {
+            echo "<a href='/acme/accounts/?action=Admin'>Welcome " . $_SESSION['clientData']['clientFirstname'];
+            echo "<img src='/acme/images/site/account.gif' alt='account' height='30' width='35'/></a>\n\t\t";
+            echo "<a href='/acme/accounts/?action=Logout'>Logout</a>";
+        } else {
+            echo "<a href='/acme/accounts/?action=Login'>My Account";
+            echo "<img src='/acme/images/site/account.gif' alt='account' height='30' width='35'/></a>";
+        }
+        ?>
                     </div>
 		</header>
 	<main>
