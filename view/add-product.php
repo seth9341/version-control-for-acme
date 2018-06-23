@@ -1,10 +1,10 @@
+<h1><?php if(isset($prodInfo['invName'])){ echo "Modify $prodInfo[invName] ";} elseif(isset($invName)) { echo $invName; }?></h1>
 <!DOCTYPE html>
 <?php $ptitle= 'Add a product'; include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/header.php'; ?>
 		<nav>
             <?php echo buildNav() ?>
 		</nav>
-<html lang="en">
-    <body>
+
         <main>
             <form action="../products/index.php" method="post">
                 <div>
@@ -17,7 +17,7 @@
                     <!--end php-->
                 </div>
                 <h1>Add a New Product</h1>
-                <div class="form">
+                <div>
                     <label for="invName">
                         Product's Name:<br>
                         <input type="text" id="invName" name="invName">

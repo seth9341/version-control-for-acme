@@ -20,7 +20,7 @@
 		</div>
 		<div id=mayhem>
 			<div id="recipes">
-				<table>
+				<table id="recipes">
 					<tbody>
 						<h5>Featured Recipes</h5>
 						<tr>

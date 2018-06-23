@@ -1,3 +1,11 @@
+<?php
+if (!$_SESSION['loggedin'] || ($_SESSION['clientData']['clientLevel'] == 1)) {
+    header("location: /acme");
+}
+if (isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+}
+?>
 <!DOCTYPE html>
 <?php $ptitle= 'Product Management'; include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/header.php'; ?>
 		<nav>
@@ -5,21 +13,21 @@
 		</nav>
     <body>
         <main>
-            <div class="Product Management">
-                    <!--is set message-->
-                  <?php
-                if (isset($message)) {
-                    echo $message;
-                }
-                ?>
-                <!--end-->
-                <h1>Product Management</h1>
-                <p>Welcome to our product management page. Please select an option below:
-                <ul>
-                    <li><a href="../products/index.php?action=add-category" >Add a New Category</a></li>
-                    <li><a href="../products/index.php?action=add-product" >Add a New Product</a></li>
-                </ul>
-            </div>
+            <!-- <div class="Product Management"> -->
+        <h1>Product Management</h1>
+        <p>Welcome to our product management page. Please select an option below: <br><br>
+        <ul>
+        <li><a href="../products/index.php?action=add-category" >Add a New Category</a></li>
+        <li><a href="../products/index.php?action=add-product" >Add a New Product</a></li>
+        </ul>
+            <?php
+            if (isset($message)) {
+             echo $message;
+            } if (isset($prodList)) {
+             echo $prodList;
+            }
+            ?>
+            <!-- </div> -->
         </main>
 
             <?php

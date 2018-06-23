@@ -1,3 +1,8 @@
+<?php
+if (!$_SESSION['loggedin'] || ($_SESSION['clientData']['clientLevel'] == 1)) {
+    header("location: /acme");
+}
+?>
 <!DOCTYPE html>
 <?php $ptitle= 'Add a category'; include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/header.php'; ?>
 		<nav>

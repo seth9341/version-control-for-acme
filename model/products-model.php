@@ -41,3 +41,13 @@ function newProduct($invName, $invDescription, $invImage, $invThumbnail, $invPri
    $stmt->closeCursor();
    return $rowsChanged;
 }
+
+function getProductBasics() {
+ $db = acmeConnect();
+ $sql = 'SELECT invName, invId FROM inventory ORDER BY invName ASC';
+ $stmt = $db->prepare($sql);
+ $stmt->execute();
+ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+ $stmt->closeCursor();
+ return $products;
+}

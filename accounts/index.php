@@ -115,7 +115,7 @@ switch ($action) {
         array_pop($clientData);
 // Store the array into the session
         $_SESSION['clientData'] = $clientData;
-        $_SESSION['message'] = "You have succesfully logged in!";
+        // $_SESSION['message'] = "You have succesfully logged in!";
 
 // Send them to the admin view
         header('location: /acme/accounts?action=Admin');

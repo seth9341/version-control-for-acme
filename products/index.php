@@ -1,39 +1,36 @@
+<!-- * Products Controller -->
 <?php
-    /*
-     * Products Controller
-     */
+$action = filter_input(INPUT_POST, 'action');
+if ($action == NULL){
+    $action = filter_input(INPUT_GET, 'action');
+}
+    session_start();
     // Get the database connection file
     require_once '../library/connections.php';
     // Get the acme model for use as needed
+    require_once '../model/acme-model.php';
     require_once '../model/products-model.php';
     //get the common functions
     require_once '../library/functions.php';
 // Create or access a Session
- session_start();
 
-    buildNav();
-    // $navList = buildNav();
-    $categories = getCategories();
-    $catList = buildCategoryList();
-    $action = filter_input(INPUT_POST, 'action');
-    if ($action == NULL){
-        $action = filter_input(INPUT_GET, 'action');
-        if($action == NULL ) {
-            $action= 'product-management';
-        }
-    }
+    // buildNav();
+    // // $navList = buildNav();
+    // $categories = getCategories();
+    // $catList = buildCategoryList();
+    // $action = filter_input(INPUT_POST, 'action');
+    // if ($action == NULL){
+    //     $action = filter_input(INPUT_GET, 'action');
+    //     if($action == NULL ) {
+    //         $action= 'product-management';
+    //     }
+    // }
+
+$categories = getCategories();
+
+$navList = buildNav($categories);
     
-    $action = filter_input(INPUT_POST, 'action');
-    if ($action == NULL){
-        $action = filter_input(INPUT_GET, 'action');
-        if ($action == NULL){
-            $action= 'product-management';
-        }
-    }
     switch ($action){
-        case 'add-category':
-            include '../view/add-category.php';
-            break;
         case 'add-product':
             $message = '';
             include '../view/add-product.php';
@@ -91,6 +88,22 @@
                 exit;
             }
         default:
-            include '../view/product-management.php';
-   }
+        $products = getProductBasics();
+        if(count($products) > 0){
+            $prodList = '<table>';
+            $prodList .= '<thead>';
+            $prodList .= '<tr><th>Product Name</th><td>&nbsp;</td><td>&nbsp;</td></tr>';
+            $prodList .= '</thead>';
+            $prodList .= '<tbody>';
+            foreach ($products as $product) {
+                $prodList .= "<tr><td>$product[invName]</td>";
+                $prodList .= "<td><a href='/acme/products?action=mod&id=$product[invId]' title='Click to modify'>Modify</a></td>";
+                $prodList .= "<td><a href='/acme/products?action=del&id=$product[invId]' title='Click to delete'>Delete</a></td></tr>";
+            }
+            $prodList .= '</tbody></table>';
+        } else {
+            $message = '<p class="notify">Sorry, no products were returned.</p>';
+}
+        include '../view/product-management.php';
+}
 ?>

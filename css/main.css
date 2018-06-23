@@ -125,20 +125,6 @@ main img {
 	height: auto;
 	margin: 0 auto;
 }
-table, th, td {
-	width: 80%;
-	border-collapse: collapse;
-	border: 1px solid #de2226;
-	margin: auto;
-	/* color: #de2226; */
-	/* vertical-align: center; */
-}
-th {
-	background-color: #de2226;
-	font-size: 1.5em;
-	color: #ffffff;
-	text-align: center;
-}
 #rocketfeature {
 	position: relative;
 }
@@ -162,11 +148,11 @@ th {
 }
 #recipes {
 	float: left;
-	width: 40%;
+	width: 50%;
 	margin-right: 20px;
 }
 #recipes table, th, td {
-	/* width: 50%; */
+	width: 80%;
 	background-color: #808080;
 	color: #000000;
 	text-align: center;
@@ -183,6 +169,23 @@ th {
 #recipes ul {
 	list-style-type: circle;
 }
+
+table, th, td {
+	width: 80%;
+	background-color: #ffffff;
+	border-collapse: collapse;
+	border: 1px solid #de2226;
+	margin: auto;
+	/* color: #de2226; */
+	/* vertical-align: center; */
+}
+th {
+	background-color: #de2226;
+	font-size: 1.5em;
+	color: #ffffff;
+	text-align: center;
+}
+
 
 #reviews {
 	width: 50%;
