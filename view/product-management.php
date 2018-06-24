@@ -1,9 +1,10 @@
 <?php
-if (!$_SESSION['loggedin'] || ($_SESSION['clientData']['clientLevel'] == 1)) {
-    header("location: /acme");
+if ($_SESSION['clientData']['clientLevel'] < 2) {
+ header('location: /acme/');
+ exit;
 }
 if (isset($_SESSION['message'])) {
-    $message = $_SESSION['message'];
+ $message = $_SESSION['message'];
 }
 ?>
 <!DOCTYPE html>
@@ -35,3 +36,4 @@ if (isset($_SESSION['message'])) {
             ?>
     </body>
 </html>
+<?php unset($_SESSION['message']); ?>

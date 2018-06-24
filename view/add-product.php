@@ -1,4 +1,8 @@
-<h1><?php if(isset($prodInfo['invName'])){ echo "Modify $prodInfo[invName] ";} elseif(isset($invName)) { echo $invName; }?></h1>
+<?php
+if (!$_SESSION['loggedin'] || ($_SESSION['clientData']['clientLevel'] == 1)) {
+    header("location: /acme");
+}
+?>
 <!DOCTYPE html>
 <?php $ptitle= 'Add a product'; include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/header.php'; ?>
 		<nav>

@@ -28,4 +28,11 @@
             }
             echo '</ul>';
             ?>
+            <?php
+            if ($_SESSION['clientData']['clientLevel'] > 1) {
+                echo '<hr><h2>Admin tools:</h2>';
+                echo "<a href='/acme/products/?action=product-management' title='View the Acme Products page.'>Click here to manage products in the inventory!</a>";
+            }
+            ?>
+
 <?php include  $_SERVER['DOCUMENT_ROOT'] . '/acme/common/footer.php'; ?>
