@@ -20,7 +20,7 @@ if (isset($_SESSION['message'])) {
         <ul>
         <li><a href="../products/index.php?action=add-category" >Add a New Category</a></li>
         <li><a href="../products/index.php?action=add-product" >Add a New Product</a></li>
-        </ul>
+        </ul> <br>
             <?php
             if (isset($message)) {
              echo $message;

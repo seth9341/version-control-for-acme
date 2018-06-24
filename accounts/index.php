@@ -130,6 +130,66 @@ switch ($action) {
         header("location: /acme");
         break;
 
+    case 'updateAccount':
+        include '../view/client-update.php';
+        break;
+    case 'updateAcc':
+        $firstname = filter_input(INPUT_POST, 'firstName', FILTER_SANITIZE_STRING);
+        $lastname = filter_input(INPUT_POST, 'lastName', FILTER_SANITIZE_STRING);
+        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
+
+        if (empty($firstname) || empty($lastname) || empty($email)) {
+            $message = "<p>Please make sure all fields are filled out</p>";
+            include '../view/client-update.php';
+            exit;
+        }
+        if ($_SESSION['clientData']['clientEmail'] != $email) {
+            if (checkExistingEmail($email)) {
+                $message = "That email is already in use! Pick another.";
+                include '../view/client-update.php';
+                exit;
+            }
+        }
+        $updateResult = updateAccount($firstname, $lastname, $email, $_SESSION['clientData']['clientId']);
+        if ($updateResult) {
+            $message = "<p>Your account was successfully updated.</p>";
+            $_SESSION['message'] = $message;
+            $_SESSION['clientData'] = getClient($email);
+            header('location: /acme/accounts?action=Admin');
+            exit;
+        } else {
+            $message = "<p>There was an error updating your account.</p>";
+            include '../view/client-update.php';
+            exit;
+        }
+        break;
+    case 'updatePass':
+        $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+
+        $checkPassword = checkPassword($password);
+// Check for existing email address in the table
+// Check for missing data
+        if (empty($checkPassword)) {
+            $message = '<p>Please enter a valid password.</p>';
+            include '../view/client-update.php';
+            exit;
+        }
+        // Hash the checked password
+        $password = password_hash($password, PASSWORD_DEFAULT);
+        $updateResult = updatePassword($password, $_SESSION['clientData']['clientId']);
+
+        // Check and report the result
+        if ($updateResult) {
+            $message = "<p>Your account was successfully updated.</p>";
+            $_SESSION['message'] = $message;
+            header('location: /acme/accounts?action=Admin');
+            exit;
+        } else {
+            $message = "<p>There was an error updating your account.</p>";
+            include '../view/client-update.php';
+            exit;
+        }
+        break;
 
     default:
         include '../view/admin.php';

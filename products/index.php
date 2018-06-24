@@ -31,6 +31,12 @@ $categories = getCategories();
 $navList = buildNav($categories);
     
     switch ($action){
+    case 'add-category':
+        include '../view/add-category.php';
+        break;
+    case 'add-product':
+        include '../view/add-product.php';
+        break;
         case 'add-category':
             $categoryName = filter_input(INPUT_POST, 'categoryName', FILTER_SANITIZE_STRING);
             if (empty($categoryName)) {
@@ -70,7 +76,7 @@ $navList = buildNav($categories);
                     exit;
                 }
             }
-            $newProduct = newProduct($invName, $invDescription, $invImage, $invThumbnail, $invPrice, $invStock, $invSize, $invWeight, $invLocation, $categoryId, $invVendor, $invStyle);
+            $newProductOutcome = newProduct($invName, $invDescription, $invImage, $invThumbnail, $invPrice, $invStock, $invSize, $invWeight, $invLocation, $categoryId, $invVendor, $invStyle);
             if ($newProductOutcome === 1) {
                 $message = "<p>The product $invName has been added to the inventory.</p>";
                 include '../view/add-product.php';
@@ -127,7 +133,7 @@ case 'del':
  if (count($prodInfo) < 1) {
   $message = 'Sorry, no product information could be found.';
  }
- include '../view/prod-delete.php';
+ include '../view/product-delete.php';
  exit;
  break;
  case 'deleteProd':

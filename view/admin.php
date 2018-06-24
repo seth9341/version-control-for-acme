@@ -1,10 +1,3 @@
-<?php
-            if ($_SESSION['clientData']['clientLevel'] == 3) {
-                echo 'Admin';
-            } else {
-                echo 'User';
-            }
-?>
 <?php $ptitle= 'My ACME Account'; include  $_SERVER['DOCUMENT_ROOT'] . '/acme/common/header.php'; ?>
 		<nav>
 			<?php echo buildNav(); ?>
@@ -29,6 +22,8 @@
             echo '</ul>';
             ?>
             <?php
+            echo "<a href='/acme/accounts/?action=updateAccount' title='Update Account Information'>Update Account Information</a>";
+
             if ($_SESSION['clientData']['clientLevel'] > 1) {
                 echo '<hr><h2>Admin tools:</h2>';
                 echo "<a href='/acme/products/?action=product-management' title='View the Acme Products page.'>Click here to manage products in the inventory!</a>";

@@ -25,11 +25,10 @@ if($_SESSION['clientData']['clientLevel'] < 2){
         <form method="post" action="/acme/products/">
         <fieldset>
 
-        <label for="invName">Product Name</label>
-        <input type="text" readonly name="invName" id="invName" <?php if(isset($prodInfo['invName'])) {echo "value='$prodInfo[invName]'"; }?>>
-
-        <label for="invDescription">Product Description</label>
-        <textarea name="invDescription" readonly id="invDescription"><?php if(isset($prodInfo['invDescription'])) {echo $prodInfo['invDescription']; } ?></textarea>
+        <label for="invName">Product Name</label><br>
+        <input type="text" readonly name="invName" id="invName" <?php if(isset($prodInfo['invName'])) {echo "value='$prodInfo[invName]'"; }?>><br>
+        <label for="invDescription">Product Description</label><br>
+        <textarea name="invDescription" readonly id="invDescription"><?php if(isset($prodInfo['invDescription'])) {echo $prodInfo['invDescription']; } ?></textarea><br>
 
         <label>&nbsp;</label> 
         <input type="submit" class="regbtn" name="submit" value="Delete Product">
