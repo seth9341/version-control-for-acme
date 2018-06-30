@@ -153,6 +153,29 @@ case 'del':
   exit;
  }
  break;
+case 'category':
+ $categoryName = filter_input(INPUT_GET, 'categoryName', FILTER_SANITIZE_STRING);
+ $products = getProductsByCategory($categoryName);
+ if(!count($products)){
+  $message = "<p class='notice'>Sorry, no $categoryName products could be found.</p>";
+ } else {
+  $prodDisplay = buildProductsDisplay($products);
+ }
+ // echo $prodDisplay;
+ // exit;
+ include '../view/category.php';
+break;
+
+     case 'productDetail':
+        $invId = filter_input(INPUT_GET, 'invId', FILTER_SANITIZE_NUMBER_INT);
+        $product = getProductInfo($invId);
+        if (isset($product['invName'])) {
+            $productInfo = buildProductDetailDisplay($product);
+        } else {
+            $productInfo = "That product doesn't exist!";
+        }
+        include '../view/product-detail.php';
+break;
         default:
         $products = getProductBasics();
         if(count($products) > 0){

@@ -3,7 +3,6 @@ if (!$_SESSION['loggedin']) {
     header("location: /acme");
 }
 ?>
-<!DOCTYPE html>
 <?php include  $_SERVER['DOCUMENT_ROOT'] . '/acme/common/header.php'; ?>
 
         <nav>

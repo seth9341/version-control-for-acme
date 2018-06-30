@@ -7,7 +7,6 @@ if (isset($_SESSION['message'])) {
  $message = $_SESSION['message'];
 }
 ?>
-<!DOCTYPE html>
 <?php $ptitle= 'Product Management'; include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/header.php'; ?>
 		<nav>
             <?php echo buildNav() ?>

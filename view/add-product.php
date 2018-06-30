@@ -3,7 +3,20 @@ if (!$_SESSION['loggedin'] || ($_SESSION['clientData']['clientLevel'] == 1)) {
     header("location: /acme");
 }
 ?>
-<!DOCTYPE html>
+<?php
+$catList = '<select name="categoryId" id="categoryId">';
+$catList .= " <option>Select a category</option>";
+foreach ($categories as $category) {
+    $catList .= " <option value='$category[categoryId]'";
+    if (isset($categoryId)) {
+        if ($category['categoryId'] === $categoryId) {
+            $catList .= ' selected ';
+        }
+    }
+    $catList .= ">$category[categoryName]</option>";
+}
+$catList .= '</select>';
+?>
 <?php $ptitle= 'Add a product'; include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/header.php'; ?>
 		<nav>
             <?php echo buildNav() ?>
@@ -24,7 +37,7 @@ if (!$_SESSION['loggedin'] || ($_SESSION['clientData']['clientLevel'] == 1)) {
                 <div>
                     <label for="invName">
                         Product's Name:<br>
-                        <input type="text" id="invName" name="invName">
+                        <input type="text" id="invName" name="invName" value="Product's Name">
                         <br>
                     </label>
                     <label for="invDescription">
@@ -46,42 +59,42 @@ if (!$_SESSION['loggedin'] || ($_SESSION['clientData']['clientLevel'] == 1)) {
                     </label>
                     <label for="invPrice">
                         Product's Price:<br>
-                        <input type="text" id="invPrice" name="invPrice">
+                        <input type="text" id="invPrice" name="invPrice" value="Product's Price">
                         <br>
                     </label>
                     <label for="invStock">
                         Amount of product in stock:<br>
-                        <input type="text" id="invStock" name="invStock">
+                        <input type="text" id="invStock" name="invStock" value="Product's Stock Amount">
                         <br>
                     </label>
                     <label for="invSize">
                         Product's Size:<br>
-                        <input type="text" id="invSize" name="invSize">
+                        <input type="text" id="invSize" name="invSize" value="Product's Size">
                         <br>
                     </label>
                     <label for="invWeight">
                         Product's Weight:<br>
-                        <input type="text" id="invWeight" name="invWeight">
+                        <input type="text" id="invWeight" name="invWeight" value="Product's Weight">
                         <br>
                     </label>
                     <label for="invLocation">
                         Product's Location:<br>
-                        <input type="text" id="invLocation" name="invLocation">
+                        <input type="text" id="invLocation" name="invLocation" value="Product's Location">
                         <br>
                     </label>
                     <label for="categoryId">
-                        Product's Category:
+                        Product's Category: <br>
                         <?php echo $catList; ?>
                         <br>
                     </label>
                     <label for="invVendor">
                         Product's Vendor:<br>
-                        <input type="text" id="invVendor" name="invVendor">
+                        <input type="text" id="invVendor" name="invVendor" value="Product's Vendor">
                         <br>
                     </label>
                     <label for="invStyle">
                         Product's Style:<br>
-                        <input type="text" id="invStyle" name="invStyle">
+                        <input type="text" id="invStyle" name="invStyle" value="Product's Style">
                         <br>
                     </label>
                 </div>

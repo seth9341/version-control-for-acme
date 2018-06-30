@@ -4,7 +4,6 @@ if($_SESSION['clientData']['clientLevel'] < 2){
  exit;
 }
 ?>
-<!DOCTYPE html>
     <title><?php if(isset($prodInfo['invName'])){ echo "Delete $prodInfo[invName]";} ?> | Acme, Inc.</title>
 
 <?php include  $_SERVER['DOCUMENT_ROOT'] . '/acme/common/header.php'; ?>

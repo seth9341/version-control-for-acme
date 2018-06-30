@@ -21,7 +21,6 @@ foreach ($categories as $category) {
 }
 $catList .= '</select>';
 ?>
-<!DOCTYPE html>
     <title><?php if(isset($prodInfo['invName'])){ echo "Modify $prodInfo[invName] ";} elseif(isset($invName)) { echo $invName; }?> | Acme, Inc</title>
 
 <?php include  $_SERVER['DOCUMENT_ROOT'] . '/acme/common/header.php'; ?>

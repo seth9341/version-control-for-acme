@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <!-- login view -->
 
 <?php $ptitle= 'Login'; include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/header.php'; ?>
