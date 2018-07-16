@@ -112,3 +112,31 @@ function getProductsByCategory($categoryName){
  $stmt->closeCursor();
  return $products;
 }
+
+function getCurrentFeature() {
+ $db = acmeConnect();
+ $sql = 'SELECT invName FROM inventory where invFeatured = 1';
+ $stmt = $db->prepare($sql);
+ $stmt->execute();
+ $featuredProduct = $stmt->fetch(PDO::FETCH_ASSOC);
+ $stmt->closeCursor();
+ return $featuredProduct;
+}
+
+function clearFeature() {
+ $db = acmeConnect();
+ $sql = 'UPDATE inventory SET invFeatured = NULL WHERE invFeatured = 1';
+ $stmt = $db->prepare($sql);
+ $stmt->execute();
+ $stmt->closeCursor();
+}
+
+function newFeature($invId) {
+ $db = acmeConnect();
+ $sql = 'UPDATE inventory SET invFeatured = 1 WHERE invId = :invID';
+ $stmt = $db->prepare($sql);
+ $stmt->bindValue(':invID', $invId, PDO::PARAM_INT);
+ $stmt->execute();
+ $stmt->closeCursor();
+}
+

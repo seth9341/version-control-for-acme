@@ -136,6 +136,20 @@ case 'del':
  include '../view/product-delete.php';
  exit;
  break;
+ 
+case 'feat':
+        $oldName = getCurrentFeature();
+        clearFeature();
+        $invID = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+        $newFeature($invID);
+        $newName - getCurrentFeature;
+        $message = "<p class='displayMessage'>$oldName[invName] was removed as the featured product.</p>";
+        $message .= "<p class='displayMessage'>$newName[invName] was successfully added as the featured product.</p>";
+        $_SESSION['message'] = $message;
+        header ('location: /acme/products/index.php');
+ 
+break;
+ 
  case 'deleteProd':
  $invName = filter_input(INPUT_POST, 'invName', FILTER_SANITIZE_STRING);
  $invId = filter_input(INPUT_POST, 'invId', FILTER_SANITIZE_NUMBER_INT);
@@ -165,7 +179,6 @@ case 'category':
  // exit;
  include '../view/category.php';
 break;
-
      case 'productDetail':
         $invId = filter_input(INPUT_GET, 'invId', FILTER_SANITIZE_NUMBER_INT);
         $product = getProductInfo($invId);
@@ -176,6 +189,7 @@ break;
         }
         include '../view/product-detail.php';
 break;
+
         default:
         $products = getProductBasics();
         if(count($products) > 0){
@@ -187,12 +201,14 @@ break;
             foreach ($products as $product) {
                 $prodList .= "<tr><td>$product[invName]</td>";
                 $prodList .= "<td><a href='/acme/products?action=mod&id=$product[invId]' title='Click to modify'>Modify</a></td>";
-                $prodList .= "<td><a href='/acme/products?action=del&id=$product[invId]' title='Click to delete'>Delete</a></td></tr>";
+                $prodList .= "<td><a href='/acme/products?action=del&id=$product[invId]' title='Click to delete'>Delete</a></td>";
+                $prodList .= "<td><a href='/acme/products?action=setFeatured&id=$product[invId]' title='Click to set featured'>Set Featured</a></td></tr>";
             }
             $prodList .= '</tbody></table>';
         } else {
             $message = '<p class="notify">Sorry, no products were returned.</p>';
 }
+
 include '../view/product-management.php';
 }
 ?>
