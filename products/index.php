@@ -126,12 +126,12 @@ case 'del':
  break;
 
 case 'feat':
-        $oldName = getCurrentFeature();
+        $oldName = currentFeature();
         clearFeature();
         $invID = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
         newFeature($invID);
         $newName = getCurrentFeature;
-        $message .= "<p class='displayMessage'>$oldName[invName] was removed as the featured product.</p>";
+        $message = "<p class='displayMessage'>$oldName[invName] was removed as the featured product.</p>";
         $message .= "<p class='displayMessage'>$newName[invName] was successfully added as the featured product.</p>";
         $_SESSION['message'] = $message;
         header ('location: /acme/products/index.php');
@@ -176,7 +176,7 @@ break;
         }
         include '../view/product-detail.php';
 break;
-        case 'featuredDetail':
+        case 'featureDetail':
         $invID = filter_input(INPUT_GET, 'invId', FILTER_SANITIZE_NUMBER_INT);
         $product = getFeaturedInfo($invFeatured);
         if (isset($product['invName'])) {

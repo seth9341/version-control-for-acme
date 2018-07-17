@@ -108,7 +108,7 @@ function getFeaturedInfo($invFeatured){
  $stmt = $db->prepare($sql);
  $stmt->bindValue(':invId', $invId, PDO::PARAM_INT);
  $stmt->execute();
- $prodInfo = $stmt->fetch(PDO::FETCH_ASSOC);
+ $featureInfo = $stmt->fetch(PDO::FETCH_ASSOC);
  $stmt->closeCursor();
  return $featureInfo;
 }

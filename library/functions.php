@@ -242,7 +242,7 @@ function buildFeatureDisplay($products){
  $pd = '<ul id="prod-display">';
  foreach ($products as $product) {
   $pd .= '<li>';
-  $pd .= "<li><a href='/acme/products/?action=featuredDetail&invId=$product[invId]'> ";
+  $pd .= "<li><a href='/acme/products/?action=featuredDetail&invFeatured = 1'> ";
   $pd .= "<img src='$product[invThumbnail]' alt='Image of $product[invName] on Acme.com'>";
   $pd .= '<hr>';
   $pd .= "<h2>$product[invName]</h2>";
