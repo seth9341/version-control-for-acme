@@ -38,9 +38,9 @@ switch ($action) {
         header("location: /acme");
         break;
     case 'Register':
-        $firstname = filter_input(INPUT_POST, 'firstname');
-        $lastname = filter_input(INPUT_POST, 'lastname');
-        $email = filter_input(INPUT_POST, 'email');
+        $firstname = filter_input(INPUT_POST, 'firstname' FILTER_SANITIZE_STRING);
+        $lastname = filter_input(INPUT_POST, 'lastname' FILTER_SANITIZE_STRING);
+        $email = filter_input(INPUT_POST, 'email' FILTER_SANITIZE_STRING);
         $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
         $email = checkEmail($email);
         $checkPassword = checkPassword($password);
@@ -116,6 +116,9 @@ switch ($action) {
 // Store the array into the session
         $_SESSION['clientData'] = $clientData;
         // $_SESSION['message'] = "You have succesfully logged in!";
+        if(isset($_COOKIE['firstname'])) {
+        setcookie('firstname', '', time() -1, '/');
+        }
 
 // Send them to the admin view
         header('location: /acme/accounts?action=Admin');

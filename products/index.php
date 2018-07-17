@@ -125,12 +125,12 @@ case 'del':
  exit;
  break;
 
-case 'feat':
-        $oldName = currentFeature();
+case 'featured':
+        $oldName = getCurrentFeature();
         clearFeature();
         $invID = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
         newFeature($invID);
-        $newName = getCurrentFeature;
+        $newName = getCurrentFeature();
         $message = "<p class='displayMessage'>$oldName[invName] was removed as the featured product.</p>";
         $message .= "<p class='displayMessage'>$newName[invName] was successfully added as the featured product.</p>";
         $_SESSION['message'] = $message;
@@ -199,7 +199,7 @@ break;
                 $prodList .= "<tr><td>$product[invName]</td>";
                 $prodList .= "<td><a href='/acme/products?action=mod&id=$product[invId]' title='Click to modify'>Modify</a></td>";
                 $prodList .= "<td><a href='/acme/products?action=del&id=$product[invId]' title='Click to delete'>Delete</a></td>";
-                $prodList .= "<td><a href='/acme/products?action=feat&id=$product[invId]' title='Click to set featured'>Set Featured</a></td></tr>";
+                $prodList .= "<td><a href='/acme/products?action=featured&id=$product[invId]' title='Click to set featured'>Set Featured</a></td></tr>";
             }
             $prodList .= '</tbody></table>';
         } else {

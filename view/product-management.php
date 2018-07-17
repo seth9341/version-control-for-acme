@@ -16,8 +16,8 @@ if (isset($_SESSION['message'])) {
             <!-- <div class="Product Management"> -->
         <h1>Product Management</h1>
         <p>Welcome to our product management page. Please select an option below: <br><br>
-        <h2>Today's Featured product is</h2> 
-        <?php echo $featuredProduct; ?>
+        <!-- <h2>Today's Featured product is</h2>  -->
+        <!-- <?php echo $featuredProduct; ?> -->
         <ul>
         <li><a href="../products/index.php?action=add-category" >Add a New Category</a></li>
         <li><a href="../products/index.php?action=add-product" >Add a New Product</a></li>
