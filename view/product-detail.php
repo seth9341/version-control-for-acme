@@ -4,6 +4,8 @@
             <?php echo buildNav() ?>
         </nav>
         <main id="prod-display">
+            <?php echo $productInfo; ?>
+
         </main>
             <?php
             include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/footer.php';

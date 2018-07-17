@@ -14,18 +14,6 @@ if ($action == NULL){
     require_once '../library/functions.php';
 // Create or access a Session
 
-    // buildNav();
-    // // $navList = buildNav();
-    // $categories = getCategories();
-    // $catList = buildCategoryList();
-    // $action = filter_input(INPUT_POST, 'action');
-    // if ($action == NULL){
-    //     $action = filter_input(INPUT_GET, 'action');
-    //     if($action == NULL ) {
-    //         $action= 'product-management';
-    //     }
-    // }
-
 $categories = getCategories();
 
 $navList = buildNav($categories);
@@ -136,18 +124,17 @@ case 'del':
  include '../view/product-delete.php';
  exit;
  break;
- 
+
 case 'feat':
         $oldName = getCurrentFeature();
         clearFeature();
         $invID = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
-        $newFeature($invID);
-        $newName - getCurrentFeature;
-        $message = "<p class='displayMessage'>$oldName[invName] was removed as the featured product.</p>";
+        newFeature($invID);
+        $newName = getCurrentFeature;
+        $message .= "<p class='displayMessage'>$oldName[invName] was removed as the featured product.</p>";
         $message .= "<p class='displayMessage'>$newName[invName] was successfully added as the featured product.</p>";
         $_SESSION['message'] = $message;
         header ('location: /acme/products/index.php');
- 
 break;
  
  case 'deleteProd':
@@ -189,20 +176,30 @@ break;
         }
         include '../view/product-detail.php';
 break;
+        case 'featuredDetail':
+        $invID = filter_input(INPUT_GET, 'invId', FILTER_SANITIZE_NUMBER_INT);
+        $product = getFeaturedInfo($invFeatured);
+        if (isset($product['invName'])) {
+            $featureInfo = buildFeatureDisplay($product);
+        } else {
+            $featureInfo = "That item doesn't exist!";
+        }
+        // include '../view/product-detail.php';
 
+break;
         default:
         $products = getProductBasics();
         if(count($products) > 0){
             $prodList = '<table>';
             $prodList .= '<thead>';
-            $prodList .= '<tr><th>Product Name</th><td>&nbsp;</td><td>&nbsp;</td></tr>';
+            $prodList .= '<tr><th colspan="4">Product Name</th>';
             $prodList .= '</thead>';
             $prodList .= '<tbody>';
             foreach ($products as $product) {
                 $prodList .= "<tr><td>$product[invName]</td>";
                 $prodList .= "<td><a href='/acme/products?action=mod&id=$product[invId]' title='Click to modify'>Modify</a></td>";
                 $prodList .= "<td><a href='/acme/products?action=del&id=$product[invId]' title='Click to delete'>Delete</a></td>";
-                $prodList .= "<td><a href='/acme/products?action=setFeatured&id=$product[invId]' title='Click to set featured'>Set Featured</a></td></tr>";
+                $prodList .= "<td><a href='/acme/products?action=feat&id=$product[invId]' title='Click to set featured'>Set Featured</a></td></tr>";
             }
             $prodList .= '</tbody></table>';
         } else {

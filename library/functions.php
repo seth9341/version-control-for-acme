@@ -59,25 +59,22 @@ function buildProductsDisplay($products){
 }
 
 function buildProductDetailDisplay($product) {
-    $superCoolVariableName = "<h1 id='inventoryItemTitle'>$product[invName]</h1>";
-    $superCoolVariableName .= "<section id=productDetail><img id='productImage' src='$product[invImage]' alt='Image of $product[invName] on Acme.com'>\n";
-    $superCoolVariableName .= "<ul>\n";
-    $superCoolVariableName .= "<li>$product[invDescription]</li>\n";
-    $superCoolVariableName .= "<li><hr></li>\n";
-    $superCoolVariableName .= "<li>Made by: $product[invVendor]</li>\n";
-    $superCoolVariableName .= "<li>Primary material: $product[invStyle]</li>\n";
-    $superCoolVariableName .= "<li>Weight: $product[invWeight]</li>\n";
-    $superCoolVariableName .= "<li>product size: $product[invSize]</li>\n";
-    $superCoolVariableName .= "<li>Ships from: $product[invLocation]</li>\n";
-    $superCoolVariableName .= "<li>Product left in stock: $product[invStock]</li>\n";
-    $superCoolVariableName .= "<li id=prodPrice> $$product[invPrice]</li>";
-    $superCoolVariableName .= "</ul></section>\n";
-    return $superCoolVariableName;
+    $proddisp = "<h1 id='inventoryItemTitle'>$product[invName]</h1>\n";
+    $proddisp .= "<section id=productDetail><img id='productImage' src='$product[invImage]' alt='Image of $product[invName] on Acme.com'>\n";
+    $proddisp .= "<ul>";
+    $proddisp .= "<li>$product[invDescription]</li>";
+    $proddisp .= "<li><hr></li>";
+    $proddisp .= "<li>Made by: $product[invVendor]</li>";
+    $proddisp .= "<li>Primary material: $product[invStyle]</li>";
+    $proddisp .= "<li>Weight: $product[invWeight]</li>";
+    $proddisp .= "<li>product size: $product[invSize]</li>";
+    $proddisp .= "<li>Ships from: $product[invLocation]</li>";
+    $proddisp .= "<li>Product left in stock: $product[invStock]</li>";
+    $proddisp .= "<li id=prodPrice> $$product[invPrice]</li>";
+    $proddisp .= "</ul></section>";
+    return $proddisp;
 }
 
-/* * *********************************
- * Functions for working with images
- * ********************************* */
 
 // Adds "-tn" designation to file name
 function makeThumbnailName($image) {
@@ -239,4 +236,36 @@ function buildThumbnails($prodThumbnails, $prodName) {
     }
     $variable .= '</ul>';
     return $variable;
+}
+
+function buildFeatureDisplay($products){
+ $pd = '<ul id="prod-display">';
+ foreach ($products as $product) {
+  $pd .= '<li>';
+  $pd .= "<li><a href='/acme/products/?action=featuredDetail&invId=$product[invId]'> ";
+  $pd .= "<img src='$product[invThumbnail]' alt='Image of $product[invName] on Acme.com'>";
+  $pd .= '<hr>';
+  $pd .= "<h2>$product[invName]</h2>";
+  $pd .= "<span>$product[invPrice]</span>";
+  $pd .= '</li>';
+ }
+ $pd .= '</ul>';
+ return $pd;
+}
+
+function buildFeatureDetailDisplay($product) {
+    $featd = "<h1 id='inventoryItemTitle'>$product[invName]</h1>";
+    $featd .= "<section id=productDetail><img id='productImage' src='$product[invImage]' alt='Image of $product[invName] on Acme.com'>\n";
+    $featd .= "<ul>\n";
+    $featd .= "<li>$product[invDescription]</li>\n";
+    $featd .= "<li><hr></li>\n";
+    $featd .= "<li>Made by: $product[invVendor]</li>\n";
+    $featd .= "<li>Primary material: $product[invStyle]</li>\n";
+    $featd .= "<li>Weight: $product[invWeight]</li>\n";
+    $featd .= "<li>product size: $product[invSize]</li>\n";
+    $featd .= "<li>Ships from: $product[invLocation]</li>\n";
+    $featd .= "<li>Product left in stock: $product[invStock]</li>\n";
+    $featd .= "<li id=prodPrice> $$product[invPrice]</li>";
+    $featd .= "</ul></section>\n";
+    return $featureds;
 }
