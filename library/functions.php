@@ -59,8 +59,8 @@ function buildProductsDisplay($products){
 }
 
 function buildProductDetailDisplay($product) {
-    $proddisp = "<h1 id='inventoryItemTitle'>$product[invName]</h1>\n";
-    $proddisp .= "<section id=productDetail><img id='productImage' src='$product[invImage]' alt='Image of $product[invName] on Acme.com'>\n";
+    $proddisp = "<h1 id='inventoryItemTitle'>$product[invName]</h1>";
+    $proddisp .= "<section id=productDetail><img id='productImage' src='$product[invImage]' alt='Image of $product[invName] on Acme.com'>";
     $proddisp .= "<ul>";
     $proddisp .= "<li>$product[invDescription]</li>";
     $proddisp .= "<li><hr></li>";
@@ -238,34 +238,48 @@ function buildThumbnails($prodThumbnails, $prodName) {
     return $variable;
 }
 
-function buildFeatureDisplay($products){
- $pd = '<ul id="prod-display">';
- foreach ($products as $product) {
-  $pd .= '<li>';
-  $pd .= "<li><a href='/acme/products/?action=featuredDetail&invFeatured = 1'> ";
-  $pd .= "<img src='$product[invThumbnail]' alt='Image of $product[invName] on Acme.com'>";
-  $pd .= '<hr>';
-  $pd .= "<h2>$product[invName]</h2>";
-  $pd .= "<span>$product[invPrice]</span>";
-  $pd .= '</li>';
- }
- $pd .= '</ul>';
+function buildInventoryDisplay($inventorySelector){
+    $pd = "<section id=productDetail><img id='productImage' src='$inventorySelector[invImage]' alt='Image of $inventorySelector[invName] on Acme.com'>";
+    // $pd = "<h1 id='inventoryItemTitle'>$product[invName]</h1>";
+    // $pd .= "<section id=productDetail><img id='productImage' src='$product[invImage]' alt='Image of $product[invName] on Acme.com'>";
+    $pd .= "<ul>";
+    $pd .= "<li>$inventorySelector[invDescription]</li>";
+    $pd .= "<li><hr></li>";
+    $pd .= "<li>Made by: $inventorySelector[invVendor]</li>";
+    $pd .= "<li>Primary material: $inventorySelector[invStyle]</li>";
+    $pd .= "<li>Weight: $inventorySelector[invWeight]</li>";
+    $pd .= "<li>product size: $inventorySelector[invSize]</li>";
+    $pd .= "<li>Ships from: $inventorySelector[invLocation]</li>";
+    $pd .= "<li>Product left in stock: $inventorySelector[invStock]</li>";
+    $pd .= "<li id=prodPrice> $ $inventorySelector[invPrice]</li>";
+    $pd .= "</ul></section>"; 
  return $pd;
 }
 
+
+function getFeaturedInfo($invName){
+ $db = acmeConnect();
+ $sql = 'SELECT invName FROM inventory where invFeatured = 1';
+ $stmt = $db->prepare($sql);
+ $stmt->bindValue(':invId', $invId, PDO::PARAM_INT);
+ $stmt->execute();
+ $featuredInfo = $stmt->fetch(PDO::FETCH_ASSOC);
+ $stmt->closeCursor();
+ return $featuredInfo;
+}
 function buildFeatureDetailDisplay($product) {
-    $featd = "<h1 id='inventoryItemTitle'>$product[invName]</h1>";
-    $featd .= "<section id=productDetail><img id='productImage' src='$product[invImage]' alt='Image of $product[invName] on Acme.com'>\n";
-    $featd .= "<ul>\n";
-    $featd .= "<li>$product[invDescription]</li>\n";
-    $featd .= "<li><hr></li>\n";
-    $featd .= "<li>Made by: $product[invVendor]</li>\n";
-    $featd .= "<li>Primary material: $product[invStyle]</li>\n";
-    $featd .= "<li>Weight: $product[invWeight]</li>\n";
-    $featd .= "<li>product size: $product[invSize]</li>\n";
-    $featd .= "<li>Ships from: $product[invLocation]</li>\n";
-    $featd .= "<li>Product left in stock: $product[invStock]</li>\n";
-    $featd .= "<li id=prodPrice> $$product[invPrice]</li>";
-    $featd .= "</ul></section>\n";
-    return $featureds;
+    $roddisp = "<h1 id='inventoryItemTitle'>$product[invName]</h1>";
+    $roddisp .= "<section id=productDetail><img id='productImage' src='$product[invImage]' alt='Image of $product[invName] on Acme.com'>";
+    $roddisp .= "<ul>";
+    $roddisp .= "<li>$product[invDescription]</li>";
+    $roddisp .= "<li><hr></li>";
+    $roddisp .= "<li>Made by: $product[invVendor]</li>";
+    $roddisp .= "<li>Primary material: $product[invStyle]</li>";
+    $roddisp .= "<li>Weight: $product[invWeight]</li>";
+    $roddisp .= "<li>product size: $product[invSize]</li>";
+    $roddisp .= "<li>Ships from: $product[invLocation]</li>";
+    $roddisp .= "<li>Product left in stock: $product[invStock]</li>";
+    $roddisp .= "<li id=prodPrice> $$product[invPrice]</li>";
+    $roddisp .= "</ul></section>";
+    return $roddisp;
 }

@@ -6,6 +6,10 @@
 			<div class="divtree">
 			</div>
 		<h1>Welcome to Acme!</h1>
+		<div>
+				<!-- <?php echo $buildHero; ?> -->
+				<?php echo $featuredInfo; ?>
+		</div>
 		<div id="rocketfeature">
 			<img src="/acme/images/site/rocketfeature.jpg" alt="Acme Rocket!">
 			<div id="rockettext">

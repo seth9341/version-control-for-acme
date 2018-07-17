@@ -177,16 +177,17 @@ break;
         include '../view/product-detail.php';
 break;
         case 'featureDetail':
+        // $inventory = getFeatureInventory($featureName['invName']);
         $invID = filter_input(INPUT_GET, 'invId', FILTER_SANITIZE_NUMBER_INT);
-        $product = getFeaturedInfo($invFeatured);
+        $product = buildFeatureDetailDisplay();
         if (isset($product['invName'])) {
-            $featureInfo = buildFeatureDisplay($product);
+            $featuredProduct = buildFeatureDetailDisplay($product);
         } else {
-            $featureInfo = "That item doesn't exist!";
+            $featuredProduct = "That item doesn't exist!";
         }
-        // include '../view/product-detail.php';
+        include '../view/home.php';
 
-break;
+// break;
         default:
         $products = getProductBasics();
         if(count($products) > 0){
