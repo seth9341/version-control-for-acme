@@ -4,7 +4,7 @@ Hero description text
 		<li>Quick lighting fuse</li>
 		<li>NHTSA approved seat belts</li>
 		<li>Mobile launch stand included</li>
-		<li><a href="/acme/cart/"><img id="actionbtn" alt="Add to cart button" src="/acme/images/iwantit.gif"></a></li>
+		<li><a href="/acme/cart/"><img alt="Add to cart button" src="/acme/images/iwantit.gif"></a></li>
 	</ul>
 
 Hero Product Review text
